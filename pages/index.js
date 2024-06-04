@@ -9,10 +9,12 @@ import { gql } from '@apollo/client';
 export default function Home({ posts }) {
   return (
     <div className="container">
+      
       <Head>
         <title>Headless WP Next Starter</title>
         <link rel="icon" href="favicon.ico"></link>
       </Head>
+      
 
       <main>
         <h1 className="title">
@@ -43,15 +45,19 @@ export async function getStaticProps(){
 
   const GET_POSTS = gql`
   query GetAllPosts {
-  posts {
-    nodes {
-      title
-      content
-      uri
-      date
+    posts (first:3, after: null){
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        title
+        content
+        uri
+        date
+      }
     }
   }
-}
   `
   const response = await client.query({
     query: GET_POSTS
