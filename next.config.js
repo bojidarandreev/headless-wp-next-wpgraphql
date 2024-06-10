@@ -1,7 +1,7 @@
 const nextConfig = {
     i18n: {
-      locales: ["fr"],
-      defaultLocale: "fr",
+      locales: ["fr-FR"],
+      defaultLocale: "fr-FR",
     },
     async rewrites() {
       return [
